@@ -2,7 +2,7 @@
 //  GoalsView.swift
 //  riverbank
 //
-//  Created by Timothy Laurentius on 27/7/24.
+//  Created by Yang An Yi on 27/7/24.
 //
 
 import Foundation
