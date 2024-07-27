@@ -12,7 +12,7 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-                Label("Home", image: "house.fill")
+                Label("Home", systemImage: "house.fill")
                 }
             UsageView()
                 .tabItem {
@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
             SetingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear.fill")
+                    Label("Settings", systemImage: "gearshape.2.fill")
                 }
         }
     }
