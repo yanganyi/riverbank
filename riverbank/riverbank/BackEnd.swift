@@ -72,10 +72,15 @@ class riverbank: ObservableObject {
         }
     }
 
-    class logClass {
+    class tracking {
         @Published var log: [logStruct] { didSet{ save() } }
+        @Published var perCatTrack: [String: Int] { didSet { save() } }
+        @Published var perCatGoal: [String: Int] { didSet { save() } }
+        // perCat = per category
         
         let logKey = "log-key"  
+        let perCatTrackKey = "per-cat-track-key"
+        let perCatGoalKey = "per-cat-goal-key"
         
         let defaultInput = UserDefaults.standard
         let defaultShow = UserDefaults.standard
@@ -84,6 +89,8 @@ class riverbank: ObservableObject {
         
         init() {
             var cat = [logStruct(category: "", date: Date.distantPast, value: 0)]
+            var track = ["empty":0]
+            var goal = ["empty":0]
             
             if let savedInput = defaultInput.object(forKey: logKey) as? Data {
                 if let loadedInput = try? decoder.decode([logStruct].self, from: savedInput) {
@@ -92,12 +99,34 @@ class riverbank: ObservableObject {
                 }
             }
             
+            if let savedInput = defaultInput.object(forKey: perCatTrackKey) as? Data {
+                if let loadedInput = try? decoder.decode([String: Int].self, from: savedInput) {
+                    print("this is loaded input", loadedInput)
+                    track = loadedInput
+                }
+            }
+            
+            if let savedInput = defaultInput.object(forKey: perCatGoalKey) as? Data {
+                if let loadedInput = try? decoder.decode([String: Int].self, from: savedInput) {
+                    print("this is loaded input", loadedInput)
+                    goal = loadedInput
+                }
+            }
+            
             self.log = cat
+            self.perCatTrack = track
+            self.perCatGoal = goal
         }
         
         func save() {
             if let encoded = try? encoder.encode(log) {
                 defaultInput.set(encoded, forKey: logKey)
+            }
+            if let encoded = try? encoder.encode(perCatTrack) {
+                defaultInput.set(encoded, forKey: perCatTrackKey)
+            }
+            if let encoded = try? encoder.encode(perCatGoal) {
+                defaultInput.set(encoded, forKey: perCatGoalKey)
             }
         }
         
