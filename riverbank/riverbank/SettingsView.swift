@@ -15,11 +15,10 @@ struct SettingsView: View {
     let currencies = ["SGD", "USD", "EUR"]
     
     var body: some View {
-        VStack {
+        List {
             TextField("Water Cost Per Litre", text: $waterCostPerLitre)
                 .keyboardType(.decimalPad)
                 .padding()
-                .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .foregroundColor(.black)
 
@@ -28,9 +27,7 @@ struct SettingsView: View {
                     Text(currency)
                 }
             }
-            .pickerStyle(MenuPickerStyle())
             .padding()
-            .background(Color(.systemGray6))
             .cornerRadius(10)
             .foregroundColor(.black)
         }
