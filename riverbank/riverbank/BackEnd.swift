@@ -14,26 +14,68 @@ struct logStruct: Codable {
 }
 
 class riverbank: ObservableObject {
-    @Published var waterCost: Int
+    @Published var waterCost: Double
     @Published var localCurrency: String
     @Published var fixtureConsumptionRate: Double
     
+    let waterCostKey = "water-cost-key"
+    let localCurrencyKey = "local-currency-key"
+    let fixtureConsumptionRateKey = "water-cost-key"
+    
+    let defaultInput = UserDefaults.standard
+    let defaultShow = UserDefaults.standard
+    let encoder = JSONEncoder()
+    let decoder = JSONDecoder()
+    
     init() {
-        var water = 0
+        var water = 0.0
         var loc = "0"
         var fix = 0.0
         
-        // add save code later
+        if let savedInput = defaultInput.object(forKey: waterCostKey) as? Data {
+            if let loadedInput = try? decoder.decode(Double.self, from: savedInput) {
+                print("this is loaded input", loadedInput)
+                water = loadedInput
+            }
+        }
+        
+        if let savedInput = defaultInput.object(forKey: localCurrencyKey) as? Data {
+            if let loadedInput = try? decoder.decode(String.self, from: savedInput) {
+                print("this is loaded input", loadedInput)
+                loc = loadedInput
+            }
+        }
+        
+        if let savedInput = defaultInput.object(forKey: fixtureConsumptionRateKey) as? Data {
+            if let loadedInput = try? decoder.decode(Double.self, from: savedInput) {
+                print("this is loaded input", loadedInput)
+                fix = loadedInput
+            }
+        }
         
         self.waterCost = water
         self.localCurrency = loc
         self.fixtureConsumptionRate = fix
     }
-
-    class overallCateogry {
-        @Published var category: [logStruct] { didSet{ save() } }
+    
+    func save() {
+        if let encoded = try? encoder.encode(waterCost) {
+            defaultInput.set(encoded, forKey: waterCostKey)
+        }
         
-        let categoryKey = "category-overallCategory"
+        if let encoded = try? encoder.encode(localCurrency) {
+            defaultInput.set(encoded, forKey: localCurrencyKey)
+        }
+        
+        if let encoded = try? encoder.encode(fixtureConsumptionRate) {
+            defaultInput.set(encoded, forKey: fixtureConsumptionRateKey)
+        }
+    }
+
+    class logClass {
+        @Published var log: [logStruct] { didSet{ save() } }
+        
+        let logKey = "log-key"  
         
         let defaultInput = UserDefaults.standard
         let defaultShow = UserDefaults.standard
@@ -43,19 +85,19 @@ class riverbank: ObservableObject {
         init() {
             var cat = [logStruct(category: "", date: Date.distantPast, value: 0)]
             
-            if let savedInput = defaultInput.object(forKey: categoryKey) as? Data {
+            if let savedInput = defaultInput.object(forKey: logKey) as? Data {
                 if let loadedInput = try? decoder.decode([logStruct].self, from: savedInput) {
                     print("this is loaded input", loadedInput)
                     cat = loadedInput
                 }
             }
             
-            self.category = cat
+            self.log = cat
         }
         
         func save() {
-            if let encoded = try? encoder.encode(category) {
-                defaultInput.set(encoded, forKey: categoryKey)
+            if let encoded = try? encoder.encode(log) {
+                defaultInput.set(encoded, forKey: logKey)
             }
         }
         
