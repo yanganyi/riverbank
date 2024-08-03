@@ -58,7 +58,7 @@ struct WelcomeInputScreen: View {
     
     @State private var waterCostPerLitre: String = ""
     @State private var selectedCurrency: String = "USD"
-    let currencies = ["USD", "SGD", "EUR"]
+    let currencies = ["SGD", "USD", "EUR"]
     
     var body: some View {
         VStack {
