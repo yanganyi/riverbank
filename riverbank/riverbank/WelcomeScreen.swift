@@ -11,7 +11,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     @Binding var currentStep: Int
-
+    
     var body: some View {
         VStack {
             Spacer()
@@ -23,7 +23,7 @@ struct WelcomeScreen: View {
                 .foregroundColor(.teal)
                 .padding(.bottom, 50)
                 .padding(.horizontal, 30)
-
+            
             
             VStack(alignment: .leading, spacing: 20) {
                 FeatureView(imageName: "drop.fill", title: "Water", description: "Save water efficiently by using our app.")
@@ -57,7 +57,8 @@ struct WelcomeInputScreen: View {
     @Binding var currentStep: Int
     
     @State private var waterCostPerLitre: String = ""
-    @State private var localCurrency: String = ""
+    @State private var selectedCurrency: String = "USD"
+    let currencies = ["USD", "SGD", "EUR"]
     
     var body: some View {
         VStack {
@@ -77,22 +78,34 @@ struct WelcomeInputScreen: View {
                 .padding(.bottom, 30)
             
             VStack(alignment: .leading, spacing: 20) {
-                TextField("Water cost per litre", text: $waterCostPerLitre)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .foregroundColor(.black)
+                HStack {
+                    TextField("              Water Cost Per Litre", text: $waterCostPerLitre)
+                        .keyboardType(.decimalPad)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .foregroundColor(.black)
+                }
                 
-                TextField("Local currency", text: $localCurrency)
+                HStack {
+                    Spacer()
+                    Picker("Local currency", selection: $selectedCurrency) {
+                        ForEach(currencies, id: \.self) { currency in
+                            Text(currency)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                     .foregroundColor(.black)
+                    Spacer()
+                }
             }
             .padding(.horizontal, 30)
             .foregroundColor(.black)
             
-            Spacer() // Pushes the content towards the center
+            Spacer()
             
             Button(action: {
                 currentStep = 3
