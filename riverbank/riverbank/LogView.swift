@@ -8,10 +8,17 @@
 import Foundation
 import SwiftUI
 
+
+struct category: Hashable, Identifiable {
+    var id = UUID()
+    var name: String
+}
+
 struct LogView: View {
     
     @State private var date = Date()
-    @State private var category = 0
+    @State private var selectedCategory = "Drink"
+    var categories = ["Drink", "Shower", "Cleaning"]
     @State private var repeated = 0
     
     var body: some View {
@@ -29,6 +36,15 @@ struct LogView: View {
                     Text("Weekly").tag(2)
                     Text("Monthly").tag(3)
                 }
+                
+                Picker("Category", selection: $selectedCategory) {
+                    ForEach(categories, id: \.self) { categories in
+                        Text(categories)
+                    }
+                    
+                }
+                
+                
             }
         }
     }

@@ -23,7 +23,7 @@ struct ContentView: View {
                     Label("Goals", systemImage: "star")
                 
                 }
-            SetingsView()
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.2.fill")
                 }
