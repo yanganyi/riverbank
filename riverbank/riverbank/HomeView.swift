@@ -12,9 +12,12 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Home")
+                Text("Goals")
                     .font(.largeTitle)
-                    .foregroundColor(.mint)
+                    .fontWeight(.bold)
+                    .foregroundColor(.teal)
+                    .padding(.leading)
+                    .padding(.top, 20)
                 
                 VStack(spacing: 10) {
                     HStack {
