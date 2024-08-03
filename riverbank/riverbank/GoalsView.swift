@@ -9,7 +9,7 @@ struct GoalsView: View {
         "Miscellaneous"
     ]
     @State private var progressValues: [String: Double] = [
-        "Water Consumption": 0.5,
+        "Water Consumption": 0.5, // Example progress values
         "Shower": 0.3,
         "Cleaning": 0.8,
         "Miscellaneous": 0.1
@@ -29,6 +29,7 @@ struct GoalsView: View {
                     ForEach(goals, id: \.self) { goal in
                         HStack {
                             Button(action: {
+                                // Replace with desired action for the goal
                                 handleGoalButtonTap(goal)
                             }) {
                                 HStack {
@@ -38,17 +39,18 @@ struct GoalsView: View {
 
                                     VStack {
                                         GeometryReader { geometry in
-                                            let progressHeight = CGFloat(progressValues[goal] ?? 0.0) * geometry.size.height
+                                            let progress = CGFloat(progressValues[goal] ?? 0.0)
+                                            let progressHeight = progress * geometry.size.height
                                             VStack {
                                                 Spacer()
                                                 Rectangle()
-                                                    .fill(Color.blue)
+                                                    .fill(Color.blue) // Progress bar color
                                                     .frame(width: 20, height: progressHeight)
                                             }
                                         }
                                     }
                                     .frame(width: 20, height: 60)
-                                    .background(Color.gray.opacity(0.3))
+                                    .background(Color.gray.opacity(0.3)) // Background color for the box
                                     .cornerRadius(5)
                                     .padding(.trailing)
                                 }
@@ -57,10 +59,10 @@ struct GoalsView: View {
                                 .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.blue, lineWidth: 2)
+                                        .stroke(Color.gray, lineWidth: 2) // Border color
                                 )
                             }
-                            .buttonStyle(PlainButtonStyle())
+                            .buttonStyle(PlainButtonStyle()) // Use plain style to avoid default button styling
                         }
                     }
                 }
@@ -75,7 +77,7 @@ struct GoalsView: View {
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.blue, lineWidth: 2)
+                            .stroke(Color.blue, lineWidth: 2) // Border color for the text field
                     )
                     .frame(height: 40)
 
@@ -97,11 +99,14 @@ struct GoalsView: View {
             .padding()
         }
     }
-    
+
+    // Function to handle goal button tap
     func handleGoalButtonTap(_ goal: String) {
         print("\(goal) button tapped")
+        // Add your desired functionality here
     }
 
+    // Function to add a new goal
     func addGoal() {
         guard !goalText.isEmpty else { return }
         goals.append(goalText)
