@@ -9,7 +9,7 @@ struct GoalsView: View {
         "Miscellaneous"
     ]
     @State private var progressValues: [String: Double] = [
-        "Water Consumption": 0.5, // Example progress values
+        "Water Consumption": 0.5,
         "Shower": 0.3,
         "Cleaning": 0.8,
         "Miscellaneous": 0.1
@@ -29,7 +29,6 @@ struct GoalsView: View {
                     ForEach(goals, id: \.self) { goal in
                         HStack {
                             Button(action: {
-                                // Replace with desired action for the goal
                                 handleGoalButtonTap(goal)
                             }) {
                                 HStack {
@@ -61,7 +60,7 @@ struct GoalsView: View {
                                         .stroke(Color.blue, lineWidth: 2)
                                 )
                             }
-                            .buttonStyle(PlainButtonStyle()) // Use plain style to avoid default button styling
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }
@@ -98,14 +97,11 @@ struct GoalsView: View {
             .padding()
         }
     }
-
-    // Function to handle goal button tap
+    
     func handleGoalButtonTap(_ goal: String) {
         print("\(goal) button tapped")
-        // Add your desired functionality here
     }
 
-    // Function to add a new goal
     func addGoal() {
         guard !goalText.isEmpty else { return }
         goals.append(goalText)
