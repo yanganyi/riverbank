@@ -9,17 +9,15 @@ import Foundation
 import SwiftUI
 
 
-struct category: Hashable, Identifiable {
-    var id = UUID()
-    var name: String
-}
-
 struct LogView: View {
     
     @State private var date = Date()
     @State private var selectedCategory = "Drink"
     var categories = ["Drink", "Shower", "Cleaning"]
     @State private var repeated = 0
+    @State private var showAddSheet = false
+    @State private var categoryName = ""
+    
     
     var body: some View {
         VStack {
@@ -38,13 +36,26 @@ struct LogView: View {
                 }
                 
                 Picker("Category", selection: $selectedCategory) {
-                    ForEach(categories, id: \.self) { categories in
-                        Text(categories)
+                    VStack {
+                        ForEach(categories, id: \.self) { categories in
+                            Text(categories)
+                            Spacer()
+                            Button("Add category") {
+                            }
+                            .sheet(isPresented: $showAddSheet, content: {
+                                HStack{
+                                    TextField("Enter category name", text: $categoryName)
+                                        .padding()
+                                    Button {
+                                        categories.append(categoryName)
+                                    } label: {
+                                        Image(systemName: "checkmark.circle.fill")
+                                    }
+                                }
+                            })
+                        }
                     }
-                    
                 }
-                
-                
             }
         }
     }
