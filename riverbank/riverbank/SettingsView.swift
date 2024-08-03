@@ -13,27 +13,54 @@ struct SettingsView: View {
     @State private var waterCostPerLitre: String = ""
     @State private var selectedCurrency: String = "USD"
     let currencies = ["SGD", "USD", "EUR"]
+    @State private var savedAlert: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 20) {
+            
+            Text("Settings")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.mint)
+                .padding(.bottom, 20)
+            
             TextField("Water Cost Per Litre", text: $waterCostPerLitre)
                 .keyboardType(.decimalPad)
-                .padding()
+                .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .foregroundColor(.black)
 
-            Picker("Local currency", selection: $selectedCurrency) {
-                ForEach(currencies, id: \.self) { currency in
-                    Text(currency)
+            HStack {
+                Text("Currency:")
+                
+                Picker("Local currency", selection: $selectedCurrency) {
+                    ForEach(currencies, id: \.self) { currency in
+                        Text(currency)
+                    }
                 }
+                .padding(3)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                .foregroundColor(.black)
             }
-            .pickerStyle(MenuPickerStyle())
-            .padding()
+            
+            Button {
+                
+            } label: {
+                Text("Submit settings")
+            }
+            .padding(10)
             .background(Color(.systemGray6))
             .cornerRadius(10)
-            .foregroundColor(.black)
+            .alert("Saved Settings!", isPresented: $savedAlert) {
+                Button("Ok") { }
+            }
+            
+            Spacer()
+            
         }
+        .padding()
     }
 }
 

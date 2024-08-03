@@ -20,40 +20,38 @@ struct LogView: View {
     
     
     var body: some View {
-        VStack {
-            List {
-                DatePicker(
-                    "Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
-                
-                Picker("Repeat", selection: $repeated) {
-                    Text("Never").tag(0)
-                    Text("Daily").tag(1)
-                    Text("Weekly").tag(2)
-                    Text("Monthly").tag(3)
-                }
-                
-                Picker("Category", selection: $selectedCategory) {
-                    VStack {
-                        ForEach(categories, id: \.self) { categories in
-                            Text(categories)
-                            Spacer()
-                            Button("Add category") {
-                            }
-                            .sheet(isPresented: $showAddSheet, content: {
-                                HStack{
-                                    TextField("Enter category name", text: $categoryName)
-                                        .padding()
-                                    Button {
-                                        categories.append(categoryName)
-                                    } label: {
-                                        Image(systemName: "checkmark.circle.fill")
-                                    }
-                                }
-                            })
+        List {
+            DatePicker(
+                "Date",
+                selection: $date,
+                displayedComponents: [.date]
+            )
+            
+            Picker("Repeat", selection: $repeated) {
+                Text("Never").tag(0)
+                Text("Daily").tag(1)
+                Text("Weekly").tag(2)
+                Text("Monthly").tag(3)
+            }
+            
+            Picker("Category", selection: $selectedCategory) {
+                VStack {
+                    ForEach(categories, id: \.self) { categories in
+                        Text(categories)
+                        Spacer()
+                        Button("Add category") {
                         }
+                        .sheet(isPresented: $showAddSheet, content: {
+                            HStack{
+                                TextField("Enter category name", text: $categoryName)
+                                    .padding()
+                                Button {
+                                    categories.append(categoryName)
+                                } label: {
+                                    Image(systemName: "checkmark.circle.fill")
+                                }
+                            }
+                        })
                     }
                 }
             }
