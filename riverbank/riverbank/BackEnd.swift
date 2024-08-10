@@ -15,7 +15,7 @@ struct logStruct: Codable {
 
 class riverbank: ObservableObject {
     @Published var waterCost: Double
-    @Published var localCurrency: String
+    @Published var localCurrency: Int // 1 for sgd, 2 for usd, 3 for eur
     @Published var fixtureConsumptionRate: Double
     
     let waterCostKey = "water-cost-key"
@@ -29,7 +29,7 @@ class riverbank: ObservableObject {
     
     init() {
         var water = 0.0
-        var loc = "0"
+        var loc = 0
         var fix = 0.0
         
         if let savedInput = defaultInput.object(forKey: waterCostKey) as? Data {
@@ -40,7 +40,7 @@ class riverbank: ObservableObject {
         }
         
         if let savedInput = defaultInput.object(forKey: localCurrencyKey) as? Data {
-            if let loadedInput = try? decoder.decode(String.self, from: savedInput) {
+            if let loadedInput = try? decoder.decode(Int.self, from: savedInput) {
                 print("this is loaded input", loadedInput)
                 loc = loadedInput
             }
@@ -74,9 +74,11 @@ class riverbank: ObservableObject {
 
     class tracking {
         @Published var log: [logStruct] { didSet{ save() } }
+        // log is the 
         @Published var perCatTrack: [String: Int] { didSet { save() } }
         @Published var perCatGoal: [String: Int] { didSet { save() } }
         // perCat = per category
+        // bascially a object where the key is the name of the category and the int is the number
         
         let logKey = "log-key"  
         let perCatTrackKey = "per-cat-track-key"
