@@ -14,7 +14,7 @@ struct UsageView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text("Goals")
+            Text("Usage")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.teal)
