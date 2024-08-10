@@ -48,7 +48,10 @@ struct SettingsView: View {
             Button {
                 
             } label: {
-                Text("Submit settings")
+                HStack{
+                    Image(systemName: "checkmark")
+                    Text("Save")
+                }
             }
             .padding(10)
             .background(Color(.systemGray6))
@@ -56,6 +59,7 @@ struct SettingsView: View {
             .alert("Saved Settings!", isPresented: $savedAlert) {
                 Button("Ok") { }
             }
+            .frame(maxWidth: .infinity, alignment: .center)
             
             Spacer()
             
