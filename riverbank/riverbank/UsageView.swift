@@ -17,7 +17,7 @@ struct UsageView: View {
             Text("Usage")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(.teal)
+                .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
             

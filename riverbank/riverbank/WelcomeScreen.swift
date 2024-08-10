@@ -20,7 +20,7 @@ struct WelcomeScreen: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .foregroundColor(.teal)
+                .foregroundColor(.mint)
                 .padding(.bottom, 50)
                 .padding(.horizontal, 30)
             
@@ -44,7 +44,7 @@ struct WelcomeScreen: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.teal)
+                    .background(Color.mint)
                     .cornerRadius(10)
             }
             .padding()
@@ -67,7 +67,7 @@ struct WelcomeInputScreen: View {
             Text("Enter details")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(.teal)
+                .foregroundColor(.mint)
                 .padding(.bottom, 20)
             
             Text("Before you begin using our app, please fill in a few details:")
@@ -115,7 +115,7 @@ struct WelcomeInputScreen: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.teal)
+                    .background(Color.mint)
                     .cornerRadius(10)
             }
             .padding(.horizontal, 30)

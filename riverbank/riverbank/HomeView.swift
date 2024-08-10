@@ -12,10 +12,10 @@ struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Goals")
+                Text("Home")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.teal)
+                    .foregroundColor(.mint)
                     .padding(.leading)
                     .padding(.top, 20)
                 

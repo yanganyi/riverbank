@@ -21,7 +21,7 @@ struct GoalsView: View {
                 Text("Goals")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.teal)
+                    .foregroundColor(.mint)
                     .padding(.leading)
                     .padding(.top, 20)
 
