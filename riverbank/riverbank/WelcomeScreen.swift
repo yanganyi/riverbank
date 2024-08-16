@@ -57,7 +57,7 @@ struct WelcomeInputScreen: View {
     @Binding var currentStep: Int
     
     @State private var waterCostPerLitre: String = ""
-    @State private var selectedCurrency: String = "USD"
+    @State private var selectedCurrency: String = "SGD"
     let currencies = ["SGD", "USD", "EUR"]
     
     var body: some View {
