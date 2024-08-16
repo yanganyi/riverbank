@@ -28,7 +28,7 @@ class riverbank: ObservableObject {
     let decoder = JSONDecoder()
     
     init() {
-        var water = 0.0
+        var water = 125.7
         var loc = 0
         var fix = 0.0
         
@@ -72,7 +72,7 @@ class riverbank: ObservableObject {
         }
     }
 
-    class tracking {
+    class tracking: ObservableObject { // added observable object for object to be observable from HomeView.swift
         @Published var log: [logStruct] { didSet{ save() } }
         // log is the 
         @Published var perCatTrack: [String: Int] { didSet { save() } }
