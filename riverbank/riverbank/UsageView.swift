@@ -49,7 +49,7 @@ struct UsageView: View {
                     
                     
                     
-                    Text("Used(insert amt here)")
+                    Text("used (insert amt here)")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
@@ -59,8 +59,8 @@ struct UsageView: View {
                 HStack {
                     Text("Category Name")
                     Spacer()
-                    Text("perecentage%")
-                }
+                    Text("percentage %")
+                }.padding(20)
                 // to be hooked up to data after clarifying
                 
                 Spacer()
@@ -68,13 +68,13 @@ struct UsageView: View {
                 List {
                     HStack {
                         VStack {
-                            Text("amt")
+                            Text("<amt>")
                                 .bold()
                             //fix this crappy ahh alignment
                             Text("name of category")
                         }
                         Spacer()
-                        Button("Edit>") {
+                        Button("Edit") {
                             //insert code to toggle editing sheet here
                             //i also might wanna use the other button variant (the one with label:) to get the arrow idk
                         }

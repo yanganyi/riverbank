@@ -41,10 +41,11 @@ struct HomeView: View {
                     .padding(.top, 20)
                 
                 VStack(spacing: 10) {
-                    HStack {
+                    HStack(spacing: 3){
                         Text("Water used")
-                        Text("This week")
+                        Text("this week")
                             .foregroundColor(.mint)
+                            .font(.system(size: 17, weight: .bold))
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     
@@ -98,7 +99,7 @@ struct HomeView: View {
                     Text("Overall")
                     Spacer()
                     Image(systemName: "arrow.up.right")
-                        .foregroundColor(.green)
+                        .foregroundColor(.mint)
                 }
                 .padding(.vertical, 5)
                 
@@ -107,6 +108,14 @@ struct HomeView: View {
                     Spacer()
                     Image(systemName: "arrow.down.right")
                         .foregroundColor(.red)
+                }
+                .padding(.vertical, 5)
+                
+                HStack {
+                    Text("Showering")
+                    Spacer()
+                    Image(systemName: "arrow.up.right")
+                        .foregroundColor(.mint)
                 }
                 .padding(.vertical, 5)
             }
