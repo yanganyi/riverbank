@@ -99,7 +99,7 @@ struct HomeView: View {
                             Image(systemName: "plus.app")
                                 .foregroundStyle(.mint)
                                 .bold()
-                            Text("Log new")
+                            Text("log new")
                                 .foregroundStyle(.mint)
                                 .bold()
                         }
