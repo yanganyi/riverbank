@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @State private var waterCostPerLitre: String = ""
-    @State private var selectedCurrency: String = "USD"
+    @State private var selectedCurrency: String = "SGD"
     let currencies = ["SGD", "USD", "EUR"]
     @State private var savedAlert: Bool = false
     
