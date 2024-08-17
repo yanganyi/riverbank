@@ -108,7 +108,7 @@ struct HomeView: View {
                     }
                     .padding()
                     .sheet(isPresented: $logSheetShown, content: {
-                        LogView()
+                        LogView(sheetShown: $logSheetShown)
                     })
                     Spacer()
                 }
