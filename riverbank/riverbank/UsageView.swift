@@ -18,7 +18,6 @@ struct UsageView: View {
     }
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             Text("Usage")
                 .font(.largeTitle)
@@ -28,69 +27,57 @@ struct UsageView: View {
                 .padding(.top, 20)
             
             NavigationStack{
-                
-                
                 ZStack {
-                    
-                    
                     Circle()
                         .stroke(
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
-                
-                    
-                    
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
-                            Color.green,
+                            Color.red,
                             style: StrokeStyle(
                                 lineWidth: 30,
                                 lineCap: .round
                             )
                         )
                         .rotationEffect(.degrees(-90))
-                    // 1
                         .animation(.easeOut, value: progress)
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
-                            Color.mint,
+                            Color.blue,
                             style: StrokeStyle(
                                 lineWidth: 30,
                                 lineCap: .round
                             )
                         )
                         .rotationEffect(.degrees(-45))
-                    // 1
                         .animation(.easeOut, value: progress2)
-                    
-                    
-                    
                     Text("40%")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
                     
-                }
-                .padding(20)
+                }.padding(20)
+                
                 HStack {
                     Text("Drinking")
-                        .foregroundColor(.green)
+                        .foregroundColor(.red)
                     Spacer()
-                    Text("10 %")
-                }.padding(20)
+                    Text("10%")
+                }.padding(35).padding(.bottom, -60)
+                
                 HStack {
                     Text("Showering")
-                        .foregroundColor(.mint)
+                        .foregroundColor(.blue)
                     Spacer()
-                    Text("30 %")
-                }.padding(20)
+                    Text("30%")
+                }.padding(35).padding(.bottom, -25)
+                
                 // to be hooked up to data after clarifying
-                
                 Spacer()
-                
                 List {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
@@ -101,35 +88,25 @@ struct UsageView: View {
                                     .font(.caption)
                             }
                             Spacer()
-                            Button("Edit") {
-                                
-                            }
+                            Button("Edit") {}
                         }
                         HStack {
                             VStack(alignment: .leading) {
-                                
                                 Text("65 litres")
                                     .foregroundColor(.mint)
-                                
-                                
                                 Text("Shower, 5 minutes")
                                     .font(.caption)
                             }
                             Spacer()
-                            Button("Edit") {
-                                
-                            }
+                            Button("Edit") {}
                         }
                     } //repeat for every category
                 }
-                
             }
         }
-        
-        
-        
     }
 }
+
 #Preview {
     UsageView()
 }
