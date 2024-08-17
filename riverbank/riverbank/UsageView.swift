@@ -12,7 +12,6 @@ struct UsageView: View {
     @State var progress = 0.47
     //change with water or some other var aft coordinating with backend
     var body: some View {
-        
         VStack(alignment: .leading) {
             Text("Usage")
                 .font(.largeTitle)
@@ -20,20 +19,13 @@ struct UsageView: View {
                 .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
-            
             NavigationStack{
-                
-                
                 ZStack {
-                    
-                    
                     Circle()
                         .stroke(
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
-                    
-                    
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -46,14 +38,10 @@ struct UsageView: View {
                         .rotationEffect(.degrees(-90))
                     // 1
                         .animation(.easeOut, value: progress)
-                    
-                    
-                    
                     Text("used (insert amt here)")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
-                    
                 }
                 .padding(20)
                 HStack {
@@ -62,9 +50,7 @@ struct UsageView: View {
                     Text("percentage %")
                 }.padding(20)
                 // to be hooked up to data after clarifying
-                
                 Spacer()
-                
                 List {
                     HStack {
                         VStack {
@@ -78,18 +64,14 @@ struct UsageView: View {
                             //insert code to toggle editing sheet here
                             //i also might wanna use the other button variant (the one with label:) to get the arrow idk
                         }
-                        
                     }
                     //repeat for every category
                 }
-                
             }
         }
-        
-        
-        
     }
 }
+
 #Preview {
     UsageView()
 }
