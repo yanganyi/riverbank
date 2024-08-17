@@ -9,8 +9,14 @@ import Foundation
 import SwiftUI
 
 struct UsageView: View {
-    @State var progress = 0.47
-    //change with water or some other var aft coordinating with backend
+    @State var progress = 0.3
+    @State var progress2 = 0.1
+    @ObservedObject var trackingData: Tracking
+    
+    init(trackingData: Tracking = Tracking()) {
+        self.trackingData = trackingData
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Usage")
@@ -19,6 +25,7 @@ struct UsageView: View {
                 .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
+            
             NavigationStack{
                 ZStack {
                     Circle()
@@ -29,43 +36,71 @@ struct UsageView: View {
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
-                            Color.mint,
+                            Color.red,
                             style: StrokeStyle(
                                 lineWidth: 30,
                                 lineCap: .round
                             )
                         )
                         .rotationEffect(.degrees(-90))
-                    // 1
                         .animation(.easeOut, value: progress)
-                    Text("used (insert amt here)")
+                    Circle()
+                        .trim(from: 0, to: progress)
+                        .stroke(
+                            Color.blue,
+                            style: StrokeStyle(
+                                lineWidth: 30,
+                                lineCap: .round
+                            )
+                        )
+                        .rotationEffect(.degrees(-45))
+                        .animation(.easeOut, value: progress2)
+                    Text("40%")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
-                }
-                .padding(20)
-                HStack {
-                    Text("Category Name")
-                    Spacer()
-                    Text("percentage %")
+                    
                 }.padding(20)
+                
+                HStack {
+                    Text("Drinking")
+                        .foregroundColor(.red)
+                    Spacer()
+                    Text("10%")
+                }.padding(35).padding(.bottom, -60)
+                
+                HStack {
+                    Text("Showering")
+                        .foregroundColor(.blue)
+                    Spacer()
+                    Text("30%")
+                }.padding(35).padding(.bottom, -25)
+                
                 // to be hooked up to data after clarifying
                 Spacer()
                 List {
-                    HStack {
-                        VStack {
-                            Text("<amt>")
-                                .bold()
-                            //fix this crappy ahh alignment
-                            Text("name of category")
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("480ml")
+                                    .foregroundColor(.green)
+                                Text("Drink, 2 cups")
+                                    .font(.caption)
+                            }
+                            Spacer()
+                            Button("Edit") {}
                         }
-                        Spacer()
-                        Button("Edit") {
-                            //insert code to toggle editing sheet here
-                            //i also might wanna use the other button variant (the one with label:) to get the arrow idk
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("65 litres")
+                                    .foregroundColor(.mint)
+                                Text("Shower, 5 minutes")
+                                    .font(.caption)
+                            }
+                            Spacer()
+                            Button("Edit") {}
                         }
-                    }
-                    //repeat for every category
+                    } //repeat for every category
                 }
             }
         }
