@@ -9,6 +9,12 @@ import Foundation
 import SwiftUI
 
 struct LogView: View {
+//    @ObservedObject var trackingData: Tracking
+//
+//    init(trackingData: Tracking = Tracking()) {
+//        self.trackingData = trackingData
+//    }
+    
     
     @State private var date = Date()
     @State private var selectedCategory = "Drink"
@@ -19,7 +25,7 @@ struct LogView: View {
     @State private var repeated = 0
     @State private var showAddSheet = false
     @State private var categoryName = ""
-    var tag = 0
+    @Binding var sheetShown: Bool
     
     var body: some View {
         VStack{
@@ -29,13 +35,6 @@ struct LogView: View {
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                
-                Picker("Repeat", selection: $repeated) {
-                    Text("Never").tag(0)
-                    Text("Daily").tag(1)
-                    Text("Weekly").tag(2)
-                    Text("Monthly").tag(3)
-                }
                 
                 Picker("Category", selection: $selectedCategory) {
                     ForEach(categories, id: \.self) { category in
@@ -66,7 +65,7 @@ struct LogView: View {
                 })
             }
             Button {
-                //log (idk code)
+                sheetShown = false
             } label: {
                 HStack{
                     Image(systemName: "checkmark")
@@ -79,8 +78,4 @@ struct LogView: View {
         }
         .background(Color(.systemGray6))
     }
-}
-
-#Preview {
-    LogView()
 }
