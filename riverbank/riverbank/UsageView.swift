@@ -10,7 +10,12 @@ import SwiftUI
 
 struct UsageView: View {
     @State var progress = 0.47
-    //change with water or some other var aft coordinating with backend
+    @ObservedObject var trackingData: Tracking
+    
+    init(trackingData: Tracking = Tracking()) {
+        self.trackingData = trackingData
+    }
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -49,7 +54,7 @@ struct UsageView: View {
                     
                     
                     
-                    Text("used (insert amt here)")
+                    Text("\(trackingData.fixtureConsumptionRate, specifier: "%.1f")")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
