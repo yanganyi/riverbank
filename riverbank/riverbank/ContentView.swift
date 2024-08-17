@@ -23,10 +23,6 @@ struct ContentView: View {
                     Label("Goals", systemImage: "star")
                 
                 }
-            LogView()
-                .tabItem {
-                    Label("Log", systemImage: "pencil")
-                }
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.2.fill")
