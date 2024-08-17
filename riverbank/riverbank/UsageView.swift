@@ -25,6 +25,7 @@ struct UsageView: View {
                 .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
+            
             NavigationStack{
                 ZStack {
                     Circle()
@@ -32,61 +33,49 @@ struct UsageView: View {
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
-<<<<<<< HEAD
-                
-                    
-                    
-=======
->>>>>>> main
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
-                            Color.green,
+                            Color.red,
                             style: StrokeStyle(
                                 lineWidth: 30,
                                 lineCap: .round
                             )
                         )
                         .rotationEffect(.degrees(-90))
-                    // 1
                         .animation(.easeOut, value: progress)
-<<<<<<< HEAD
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
-                            Color.mint,
+                            Color.blue,
                             style: StrokeStyle(
                                 lineWidth: 30,
                                 lineCap: .round
                             )
                         )
                         .rotationEffect(.degrees(-45))
-                    // 1
                         .animation(.easeOut, value: progress2)
-                    
-                    
-                    
                     Text("40%")
-=======
-                    Text("used (insert amt here)")
->>>>>>> main
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
-                }
-                .padding(20)
+                    
+                }.padding(20)
+                
                 HStack {
                     Text("Drinking")
-                        .foregroundColor(.green)
+                        .foregroundColor(.red)
                     Spacer()
-                    Text("10 %")
-                }.padding(20)
+                    Text("10%")
+                }.padding(35).padding(.bottom, -60)
+                
                 HStack {
                     Text("Showering")
-                        .foregroundColor(.mint)
+                        .foregroundColor(.blue)
                     Spacer()
-                    Text("30 %")
-                }.padding(20)
+                    Text("30%")
+                }.padding(35).padding(.bottom, -25)
+                
                 // to be hooked up to data after clarifying
                 Spacer()
                 List {
@@ -99,31 +88,19 @@ struct UsageView: View {
                                     .font(.caption)
                             }
                             Spacer()
-                            Button("Edit") {
-                                
-                            }
+                            Button("Edit") {}
                         }
                         HStack {
                             VStack(alignment: .leading) {
-                                
                                 Text("65 litres")
                                     .foregroundColor(.mint)
-                                
-                                
                                 Text("Shower, 5 minutes")
                                     .font(.caption)
                             }
                             Spacer()
-                            Button("Edit") {
-                                
-                            }
+                            Button("Edit") {}
                         }
-<<<<<<< HEAD
                     } //repeat for every category
-=======
-                    }
-                    //repeat for every category
->>>>>>> main
                 }
             }
         }
