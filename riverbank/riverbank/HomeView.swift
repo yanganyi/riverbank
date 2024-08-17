@@ -29,6 +29,8 @@ struct HomeView: View {
     init(trackingData: Tracking = Tracking()) {
         self.trackingData = trackingData
     }
+    
+    @State private var logSheetShown = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -89,6 +91,26 @@ struct HomeView: View {
                                 .font(.caption)
                         }
                     }
+                }
+                HStack{
+                    Spacer()
+                    Button {
+                        logSheetShown = true
+                    } label: {
+                        HStack{
+                            Image(systemName: "plus.app")
+                                .foregroundStyle(.mint)
+                                .bold()
+                            Text("Log new")
+                                .foregroundStyle(.mint)
+                                .bold()
+                        }
+                    }
+                    .padding()
+                    .sheet(isPresented: $logSheetShown, content: {
+                        LogView()
+                    })
+                    Spacer()
                 }
                 
                 Text("Trends")
