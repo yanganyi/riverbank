@@ -33,6 +33,7 @@ struct UsageView: View {
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
+                    
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -41,9 +42,9 @@ struct UsageView: View {
                                 lineWidth: 30,
                                 lineCap: .round
                             )
-                        )
-                        .rotationEffect(.degrees(-90))
-                        .animation(.easeOut, value: progress)
+                        )   .rotationEffect(.degrees(-90))
+                            .animation(.easeOut, value: progress)
+                    
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -52,44 +53,44 @@ struct UsageView: View {
                                 lineWidth: 30,
                                 lineCap: .round
                             )
-                        )
-                        .rotationEffect(.degrees(-45))
-                        .animation(.easeOut, value: progress2)
+                        )   .rotationEffect(.degrees(-45))
+                            .animation(.easeOut, value: progress2)
                     Text("40%")
-                    //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
                     
                 }.padding(20)
                 
                 HStack {
-                    Text("Drinking")
-                        .foregroundColor(.red)
+                    Text("Drinking").foregroundColor(.red)
                     Spacer()
                     Text("10%")
-                }.padding(35).padding(.bottom, -60)
+                }   .padding(35)
+                    .padding(.bottom, -60)
                 
                 HStack {
                     Text("Showering")
                         .foregroundColor(.blue)
                     Spacer()
                     Text("30%")
-                }.padding(35).padding(.bottom, -25)
+                }   .padding(35)
+                    .padding(.bottom, -25)
                 
-                // to be hooked up to data after clarifying
                 Spacer()
+                
                 List {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("480ml")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.mint)
                                 Text("Drink, 2 cups")
                                     .font(.caption)
                             }
                             Spacer()
                             Button("Edit") {}
                         }
+                        
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("65 litres")
@@ -100,7 +101,7 @@ struct UsageView: View {
                             Spacer()
                             Button("Edit") {}
                         }
-                    } //repeat for every category
+                    }
                 }
             }
         }

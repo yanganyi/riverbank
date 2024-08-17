@@ -15,7 +15,7 @@ struct logStruct: Codable {
 
 class riverbank: ObservableObject {
     @Published var waterCost: Double
-    @Published var localCurrency: Int // 1 for sgd, 2 for usd, 3 for eur
+    @Published var localCurrency: Int // 1:sgd, 2:usd, 3:eur
     @Published var fixtureConsumptionRate: Double
     
     let waterCostKey = "water-cost-key"
@@ -72,13 +72,13 @@ class riverbank: ObservableObject {
         }
     }
 
-    class tracking: ObservableObject { // added observable object for object to be observable from HomeView.swift
+    class tracking: ObservableObject {
         @Published var log: [logStruct] { didSet{ save() } }
-        // log is the 
         @Published var perCatTrack: [String: Int] { didSet { save() } }
         @Published var perCatGoal: [String: Int] { didSet { save() } }
+        
         // perCat = per category
-        // bascially a object where the key is the name of the category and the int is the number
+        // basically a object where the key is the name of the category and the int is the number
         
         let logKey = "log-key"  
         let perCatTrackKey = "per-cat-track-key"

@@ -56,10 +56,10 @@ struct SettingsView: View {
             .padding(10)
             .background(Color(.systemGray6))
             .cornerRadius(10)
+            .frame(maxWidth: .infinity, alignment: .center)
             .alert("Saved Settings!", isPresented: $savedAlert) {
                 Button("Ok") { }
             }
-            .frame(maxWidth: .infinity, alignment: .center)
             
             Spacer()
             

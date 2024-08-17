@@ -24,15 +24,13 @@ struct WelcomeScreen: View {
                 .padding(.bottom, 50)
                 .padding(.horizontal, 30)
             
-            
             VStack(alignment: .leading, spacing: 20) {
                 FeatureView(imageName: "drop.fill", title: "Water", description: "Save water efficiently by using our app.")
                 FeatureView(imageName: "chart.pie.fill", title: "Charts", description: "See your daily, weekly, or even monthly progress of water saving.")
                 FeatureView(imageName: "star.fill", title: "Goals", description: "Customise your goals.")
                 FeatureView(imageName: "pencil.line", title: "Log", description: "Enter your daily water usage.")
-            }
-            .padding(.horizontal, 30)
-            .foregroundColor(.black)
+            }   .padding(.horizontal, 30)
+                .foregroundColor(.black)
             
             Spacer()
             
@@ -46,10 +44,8 @@ struct WelcomeScreen: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.mint)
                     .cornerRadius(10)
-            }
-            .padding()
-        }
-        .padding()
+            }.padding()
+        }.padding()
     }
 }
 
@@ -93,17 +89,15 @@ struct WelcomeInputScreen: View {
                         ForEach(currencies, id: \.self) { currency in
                             Text(currency)
                         }
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .foregroundColor(.black)
+                    }   .pickerStyle(MenuPickerStyle())
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .foregroundColor(.black)
                     Spacer()
                 }
-            }
-            .padding(.horizontal, 30)
-            .foregroundColor(.black)
+            }   .padding(.horizontal, 30)
+                .foregroundColor(.black)
             
             Spacer()
             
@@ -117,11 +111,9 @@ struct WelcomeInputScreen: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.mint)
                     .cornerRadius(10)
-            }
-            .padding(.horizontal, 30)
-            .padding(.bottom, 20)
-        }
-        .padding()
+            }   .padding(.horizontal, 30)
+                .padding(.bottom, 20)
+        }.padding()
     }
 }
 
@@ -145,8 +137,7 @@ struct FeatureView: View {
                 Text(description)
                     .font(.subheadline)
                     .lineLimit(nil)
-            }
-            .padding(.leading, 10)
+            }.padding(.leading, 10)
         }
     }
 }
@@ -159,9 +150,11 @@ struct SubContentView: View {
         VStack {
             if currentStep == 1 {
                 WelcomeScreen(currentStep: $currentStep)
-            } else if currentStep == 2 {
+            }
+            else if currentStep == 2 {
                 WelcomeInputScreen(currentStep: $currentStep)
-            } else {
+            }
+            else {
                 ContentView()
             }
         }
@@ -172,4 +165,3 @@ struct SubContentView: View {
 #Preview {
     SubContentView()
 }
-

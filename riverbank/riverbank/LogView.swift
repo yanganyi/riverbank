@@ -9,19 +9,9 @@ import Foundation
 import SwiftUI
 
 struct LogView: View {
-//    @ObservedObject var trackingData: Tracking
-//
-//    init(trackingData: Tracking = Tracking()) {
-//        self.trackingData = trackingData
-//    }
-    
-    
     @State private var date = Date()
     @State private var selectedCategory = "Drink"
-    @State private var categories = [
-        "Drink",
-        "Shower",
-        "Cleaning"]
+    @State private var categories = ["Drink", "Shower", "Cleaning"]
     @State private var repeated = 0
     @State private var showAddSheet = false
     @State private var categoryName = ""
@@ -37,33 +27,27 @@ struct LogView: View {
                 )
                 
                 Picker("Category", selection: $selectedCategory) {
-                    ForEach(categories, id: \.self) { category in
+                    ForEach(categories, id: \.self) {category in
                         Text(category).tag(category)
                     }
                 }
                 
-                Button("Add category") {
-                    showAddSheet = true
-                }
-                .foregroundStyle(.mint)
-                .sheet(isPresented: $showAddSheet, content: {
-                    VStack {
-                        TextField("Enter category name", text: $categoryName)
-                            .padding()
-                        Button {
-                            if !categoryName.isEmpty {
-                                categories.append(categoryName)
-                                categoryName = ""
-                                showAddSheet = false
-                            }
-                        } label: {
-                            Text("Add")
-                        }
-                        .padding()
-                    }
-                    .padding()
-                })
+                Button("Add category") { showAddSheet = true}
+                    .foregroundStyle(.mint)
+                    .sheet(isPresented: $showAddSheet, content: {
+                        VStack {
+                            TextField("Enter category name", text: $categoryName).padding()
+                            Button {
+                                if !categoryName.isEmpty {
+                                    categories.append(categoryName)
+                                    categoryName = ""
+                                    showAddSheet = false
+                                }
+                            } label: { Text("Add") }.padding()
+                        }.padding()
+                    })
             }
+            
             Button {
                 sheetShown = false
             } label: {
@@ -71,11 +55,9 @@ struct LogView: View {
                     Image(systemName: "checkmark")
                     Text("Log")
                 }
-            }
-            .foregroundStyle(.mint)
-            .bold()
-            .font(.title2)
-        }
-        .background(Color(.systemGray6))
+            }   .foregroundStyle(.mint)
+                .bold()
+                .font(.title2)
+        }   .background(Color(.systemGray6))
     }
 }
