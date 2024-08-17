@@ -9,9 +9,16 @@ import Foundation
 import SwiftUI
 
 struct UsageView: View {
-    @State var progress = 0.47
-    //change with water or some other var aft coordinating with backend
+    @State var progress = 0.3
+    @State var progress2 = 0.1
+    @ObservedObject var trackingData: Tracking
+    
+    init(trackingData: Tracking = Tracking()) {
+        self.trackingData = trackingData
+    }
+    
     var body: some View {
+        
         VStack(alignment: .leading) {
             Text("Usage")
                 .font(.largeTitle)
@@ -19,13 +26,33 @@ struct UsageView: View {
                 .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
+            
             NavigationStack{
+                
+                
                 ZStack {
+                    
+                    
                     Circle()
                         .stroke(
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
+                
+                    
+                    
+                    Circle()
+                        .trim(from: 0, to: progress)
+                        .stroke(
+                            Color.green,
+                            style: StrokeStyle(
+                                lineWidth: 30,
+                                lineCap: .round
+                            )
+                        )
+                        .rotationEffect(.degrees(-90))
+                    // 1
+                        .animation(.easeOut, value: progress)
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -35,43 +62,74 @@ struct UsageView: View {
                                 lineCap: .round
                             )
                         )
-                        .rotationEffect(.degrees(-90))
+                        .rotationEffect(.degrees(-45))
                     // 1
-                        .animation(.easeOut, value: progress)
-                    Text("used (insert amt here)")
+                        .animation(.easeOut, value: progress2)
+                    
+                    
+                    
+                    Text("40%")
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
+                    
                 }
                 .padding(20)
                 HStack {
-                    Text("Category Name")
+                    Text("Drinking")
+                        .foregroundColor(.green)
                     Spacer()
-                    Text("percentage %")
+                    Text("10 %")
+                }.padding(20)
+                HStack {
+                    Text("Showering")
+                        .foregroundColor(.mint)
+                    Spacer()
+                    Text("30 %")
                 }.padding(20)
                 // to be hooked up to data after clarifying
+                
                 Spacer()
+                
                 List {
-                    HStack {
-                        VStack {
-                            Text("<amt>")
-                                .bold()
-                            //fix this crappy ahh alignment
-                            Text("name of category")
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("480ml")
+                                    .foregroundColor(.green)
+                                Text("Drink, 2 cups")
+                                    .font(.caption)
+                            }
+                            Spacer()
+                            Button("Edit") {
+                                
+                            }
                         }
-                        Spacer()
-                        Button("Edit") {
-                            //insert code to toggle editing sheet here
-                            //i also might wanna use the other button variant (the one with label:) to get the arrow idk
+                        HStack {
+                            VStack(alignment: .leading) {
+                                
+                                Text("65 litres")
+                                    .foregroundColor(.mint)
+                                
+                                
+                                Text("Shower, 5 minutes")
+                                    .font(.caption)
+                            }
+                            Spacer()
+                            Button("Edit") {
+                                
+                            }
                         }
-                    }
-                    //repeat for every category
+                    } //repeat for every category
                 }
+                
             }
         }
+        
+        
+        
     }
 }
-
 #Preview {
     UsageView()
 }
