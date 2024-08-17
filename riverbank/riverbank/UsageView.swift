@@ -18,7 +18,6 @@ struct UsageView: View {
     }
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             Text("Usage")
                 .font(.largeTitle)
@@ -26,21 +25,19 @@ struct UsageView: View {
                 .foregroundColor(.mint)
                 .padding(.leading)
                 .padding(.top, 20)
-            
             NavigationStack{
-                
-                
                 ZStack {
-                    
-                    
                     Circle()
                         .stroke(
                             Color.mint.opacity(0.5),
                             lineWidth: 30
                         )
+<<<<<<< HEAD
                 
                     
                     
+=======
+>>>>>>> main
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -53,6 +50,7 @@ struct UsageView: View {
                         .rotationEffect(.degrees(-90))
                     // 1
                         .animation(.easeOut, value: progress)
+<<<<<<< HEAD
                     Circle()
                         .trim(from: 0, to: progress)
                         .stroke(
@@ -69,10 +67,12 @@ struct UsageView: View {
                     
                     
                     Text("40%")
+=======
+                    Text("used (insert amt here)")
+>>>>>>> main
                     //use string interpolation here
                         .font(.title2)
                         .foregroundColor(Color.black)
-                    
                 }
                 .padding(20)
                 HStack {
@@ -88,9 +88,7 @@ struct UsageView: View {
                     Text("30 %")
                 }.padding(20)
                 // to be hooked up to data after clarifying
-                
                 Spacer()
-                
                 List {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
@@ -120,16 +118,18 @@ struct UsageView: View {
                                 
                             }
                         }
+<<<<<<< HEAD
                     } //repeat for every category
+=======
+                    }
+                    //repeat for every category
+>>>>>>> main
                 }
-                
             }
         }
-        
-        
-        
     }
 }
+
 #Preview {
     UsageView()
 }

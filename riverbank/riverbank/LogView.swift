@@ -76,7 +76,6 @@ struct LogView: View {
             .foregroundStyle(.mint)
             .bold()
             .font(.title2)
-            
         }
         .background(Color(.systemGray6))
     }
